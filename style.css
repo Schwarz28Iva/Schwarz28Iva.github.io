@@ -15,10 +15,14 @@ header {
   background-color: #333;
   color: #fff;
   padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
   margin: 0;
+  font-size: 24px;
 }
 
 nav a {
@@ -46,7 +50,4 @@ section#hero p {
 
 .btn {
   display: inline-block;
-  padding: 12px 24px;
-  background-color: #333;
-  color: #fff;
- 
+  padding
