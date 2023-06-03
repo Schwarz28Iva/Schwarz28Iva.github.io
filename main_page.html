@@ -18,49 +18,48 @@
     </div>
   </header>
 
-  <section id="hero">
-    <div class="container">
-      <h2>Welcome to my Portfolio</h2>
-      <p>I am a software developer passionate about creating amazing web experiences.</p>
-      <a href="#projects" class="btn">View Projects</a>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>Write a brief introduction about yourself here.</p>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="project">
-        <h3>Project 1</h3>
-        <p>Description of project 1.</p>
-        <a href="#" class="btn">View Demo</a>
-      </div>
-      <div class="project">
-        <h3>Project 2</h3>
-        <p>Description of project 2.</p>
-        <a href="#" class="btn">View Demo</a>
-      </div>
-      <!-- Add more project sections as needed -->
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Contact information or a contact form can go here.</p>
-    </div>
-  </section>
+  <!-- Rest of the HTML code -->
 
   <footer>
     <div class="container">
       <p>&copy; 2023 Your Name. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Smooth scrolling
+    const menuLinks = document.querySelectorAll('nav a');
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', smoothScroll);
+    });
+
+    function smoothScroll(event) {
+      event.preventDefault();
+      const targetId = event.currentTarget.getAttribute('href');
+      const targetPosition = document.querySelector(targetId).offsetTop;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000;
+      let start = null;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
+        if (progress < duration) window.requestAnimationFrame(step);
+      }
+
+      window.requestAnimationFrame(step);
+    }
+
+    // Easing function
+    function easeInOutCubic(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t * t + b;
+      t -= 2;
+      return c / 2 * (t * t * t + 2) + b;
+    }
+  </script>
 </body>
 </html>
